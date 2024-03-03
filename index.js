@@ -22,7 +22,7 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    const productsCollection = client.db('ecommercedb').collection('products')
+    const productsCollection = client.db('ecomercedb').collection('products')
     app.get('/products', async(req, res)=>{
         const cursor = productsCollection.find()
         const products = await cursor.toArray()
