@@ -23,10 +23,16 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     const productsCollection = client.db('ecomercedb').collection('products')
+    const productdetailCollection = client.db('ecomercedb').collection('productdetail')
     app.get('/products', async(req, res)=>{
         const cursor = productsCollection.find()
         const products = await cursor.toArray()
         res.send(products)
+    })
+    app.get('/productdetail', async(req, res)=>{
+        const cursor = productdetailCollection.find()
+        const productdetail = await cursor.toArray()
+        res.send(productdetail)
     })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
